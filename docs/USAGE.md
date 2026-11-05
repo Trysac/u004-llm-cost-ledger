@@ -18,7 +18,9 @@ ledger = CostLedger(
     clock=lambda: datetime.now(timezone.utc),
 )
 ledger.check(Decimal("0.40"))  # raises BudgetExceededError if it would pass a cap
-ledger.record(provider="openai", model="gpt-x", input_tokens=120, output_tokens=40, cost=Decimal("0.40"))
+ledger.record(
+    provider="openai", model="gpt-x", input_tokens=120, output_tokens=40, cost=Decimal("0.40")
+)
 print(ledger.spent_today(), ledger.summary("model"))
 ```
 
