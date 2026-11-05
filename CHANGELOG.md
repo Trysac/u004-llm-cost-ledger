@@ -9,4 +9,5 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Add `CostLedger` with `MemoryLedgerStore` and `JsonlLedgerStore`: per-call token and cost records, daily and monthly caps in a chosen time zone, one-time warnings, a pre-call `check` and grouped summaries.
 - Initial project structure from the factory utility template.

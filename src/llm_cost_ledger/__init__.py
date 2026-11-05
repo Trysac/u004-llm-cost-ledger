@@ -1,21 +1,27 @@
-"""In-process ledger of tokens and cost per LLM call with daily and monthly caps in a chosen time zone, one-time warnings and a pre-call budget check"""
+"""In-process ledger of tokens and cost per LLM call with caps, warnings and a budget check."""
 
 from __future__ import annotations
 
-__all__ = ["__version__", "normalize"]
+import logging
+
+from .entry import Entry
+from .errors import BudgetExceededError, LedgerCorruptError, LedgerError
+from .ledger import CostLedger, LedgerEvent
+from .stores import JsonlLedgerStore, LedgerStore, MemoryLedgerStore
+
+__all__ = [
+    "BudgetExceededError",
+    "CostLedger",
+    "Entry",
+    "JsonlLedgerStore",
+    "LedgerCorruptError",
+    "LedgerError",
+    "LedgerEvent",
+    "LedgerStore",
+    "MemoryLedgerStore",
+    "__version__",
+]
 
 __version__ = "0.1.0"
 
-
-def normalize(value: str) -> str:
-    """Return ``value`` trimmed and lower-cased.
-
-    Placeholder API created by the template: replace it with the utility's real behavior.
-
-    Raises:
-        ValueError: if ``value`` is empty or only whitespace.
-    """
-    cleaned = value.strip()
-    if not cleaned:
-        raise ValueError("value must not be empty")
-    return cleaned.lower()
+logging.getLogger(__name__).addHandler(logging.NullHandler())
