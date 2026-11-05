@@ -47,13 +47,13 @@ def make(store: Any = None, clock: Any = None, **kwargs: Any) -> CostLedger:
     )
 
 
-def rec(ledger: CostLedger, cost: str = "0.60", **overrides: Any) -> Entry:
+def rec(ledger: CostLedger, cost: Any = "0.60", **overrides: Any) -> Entry:
     args: dict[str, Any] = {
         "provider": "openai",
         "model": "gpt-x",
         "input_tokens": 10,
         "output_tokens": 5,
-        "cost": Decimal(cost),
+        "cost": Decimal(cost) if isinstance(cost, str) else cost,
     }
     args.update(overrides)
     return ledger.record(**args)
