@@ -1,0 +1,16 @@
+# llm-cost-ledger
+
+> In-process ledger of tokens and cost per LLM call with daily and monthly caps in a chosen time zone, one-time warnings and a pre-call budget check Python package `trysac-llm-cost-ledger`, import name `llm_cost_ledger`, MIT licensed,
+> Python >= 3.10, no runtime dependencies.
+
+## Docs
+
+- [README](README.md): problem, install, usage example
+- [AGENTS](AGENTS.md): commands, folder map, conventions, limits
+- [Architecture](docs/ARCHITECTURE.md): shape of the package and its public API
+- [Testing](docs/TESTING.md): how to run and extend the tests
+
+## Optional
+
+- [Stack](docs/STACK.md): tools used and discarded
+- [Changelog](CHANGELOG.md): release history
