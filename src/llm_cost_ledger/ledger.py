@@ -87,9 +87,10 @@ class CostLedger:
             raise LedgerError("invalid_argument", "clock must be callable")
         if on_event is not None and not callable(on_event):
             raise LedgerError("invalid_argument", "on_event must be callable")
-        if hash_key is not None:
-            if not isinstance(hash_key, bytes) or not 0 < len(hash_key) <= MAX_HASH_KEY_BYTES:
-                raise LedgerError("invalid_argument", "hash_key must be 1 to 1024 bytes")
+        if hash_key is not None and (
+            not isinstance(hash_key, bytes) or not 0 < len(hash_key) <= MAX_HASH_KEY_BYTES
+        ):
+            raise LedgerError("invalid_argument", "hash_key must be 1 to 1024 bytes")
         self._store = store
         self._tz = tz
         self._clock = clock
