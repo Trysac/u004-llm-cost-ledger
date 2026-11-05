@@ -142,13 +142,13 @@ def decode_entry(body: bytes, line: int) -> Entry:
     try:
         return build_entry(
             at=datetime.fromisoformat(at_raw),
-            provider=data.get("provider"),
-            model=data.get("model"),
-            input_tokens=data.get("input_tokens"),
-            output_tokens=data.get("output_tokens"),
+            provider=data["provider"],
+            model=data["model"],
+            input_tokens=data["input_tokens"],
+            output_tokens=data["output_tokens"],
             cost=Decimal(cost_raw),
             tags=tags_raw,
             prompt_sha256=data.get("prompt_sha256"),
         )
-    except (LedgerError, ValueError, ArithmeticError):
+    except (LedgerError, ValueError, ArithmeticError, KeyError):
         raise LedgerCorruptError(line, "invalid field value") from None
